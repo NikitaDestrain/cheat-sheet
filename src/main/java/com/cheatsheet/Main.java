@@ -25,7 +25,7 @@ public class Main extends Application {
             launch(args);
         } catch(Exception e) {
             e.printStackTrace();
-        }
+        }//
     }
 
     @Override
