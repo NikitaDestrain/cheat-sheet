@@ -26,14 +26,13 @@ public class Main extends Application {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        ///
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenu.fxml"));
         primaryStage.setTitle("Меню");
-        primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
 }
