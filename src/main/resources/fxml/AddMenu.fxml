@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cheatsheet.control.ControllerAdd">
+    <children>
+        <Button fx:id="button_ok" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="323.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #87ff8a;" text="ОК" textAlignment="CENTER">
+            <font>
+                <Font name="NBC Futura Medium" size="14.0" />
+            </font></Button>
+        <Button fx:id="button_back" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="200.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #ff8787;" text="Отмена" textAlignment="CENTER">
+            <font>
+                <Font name="NBC Futura Medium" size="14.0" />
+            </font></Button>
+      <Label fx:id="heading" alignment="CENTER" contentDisplay="CENTER" layoutY="28.0" prefHeight="73.0" prefWidth="600.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font name="NBC Futura Medium" size="39.0" />
+         </font>
+      </Label>
+      <TextField fx:id="field_answ" alignment="CENTER" layoutX="159.0" layoutY="135.0" prefHeight="38.0" prefWidth="282.0" promptText="Введите ответ" style="-fx-background-color: #e5e5e5;">
+         <font>
+            <Font name="NBC Futura Medium" size="15.0" />
+         </font>
+      </TextField>
+    </children>
+</AnchorPane>
