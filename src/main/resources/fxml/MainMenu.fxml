@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,22 +13,30 @@
          <font>
             <Font name="NBC Futura Medium" size="15.0" />
          </font></TextField>
-      <Button fx:id="button_edit" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="234.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" style="-fx-background-color: #87ff8a;" text="Редактировать" textAlignment="CENTER" visible="false">
+      <Button fx:id="button_addAnsw" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" style="-fx-background-color: #87ff8a;" text="Добавить ответ" textAlignment="CENTER" visible="false">
          <font>
             <Font name="NBC Futura Medium" size="14.0" />
          </font></Button>
-      <Button fx:id="button_delete" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="262.0" layoutY="362.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #ff8787;" text="Удалить" textAlignment="CENTER" visible="false">
+      <Button fx:id="button_deleteQ" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="106.0" layoutY="361.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" style="-fx-background-color: #ff8787;" text="Удалить вопрос" textAlignment="CENTER" visible="false">
          <font>
             <Font name="NBC Futura Medium" size="14.0" />
          </font></Button>
-      <Button fx:id="button_add" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="247.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #878dff;" text="Добавить" textAlignment="CENTER" visible="false">
+      <Button fx:id="button_addQ" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="230.0" layoutY="253.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" style="-fx-background-color: #878dff;" text="Добавить вопрос" textAlignment="CENTER" visible="false">
          <font>
             <Font name="NBC Futura Medium" size="14.0" />
          </font></Button>
-      <ScrollPane fx:id="scroll_panel" disable="true" layoutY="47.0" prefHeight="258.0" prefWidth="601.0" style="-fx-background-color: #ffffe5;" visible="false">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="583.0" style="-fx-background-color: #ffffe5;" />
-        </content>
+      <ScrollPane fx:id="scroll_panel" layoutX="6.0" layoutY="46.0" prefHeight="310.0" prefWidth="588.0" style="-fx-background-color: #fffff2;" visible="false">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="307.0" prefWidth="586.0" style="-fx-border-color: #000000;">
+               <children>
+                  <Label contentDisplay="CENTER" layoutX="6.0" layoutY="-2.0" prefHeight="28.0" prefWidth="569.0" text="Something" textAlignment="CENTER">
+                     <font>
+                        <Font name="NBC Futura Medium" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </content>
       </ScrollPane>
    </children>
 </AnchorPane>

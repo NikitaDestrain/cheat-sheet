@@ -10,113 +10,167 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class Controller {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    private final int POS_CENTER_SEARCH_FIELD_Y = 162;
+    private final int POS_TOP_SEARCH_FIELD_Y = 5;
 
     @FXML
     private TextField field_search;
 
-    /** кнопки **/
     @FXML
-    private Button button_edit;
+    private Button button_addAnsw;
+
     @FXML
-    private Button button_delete;
+    private Button button_deleteQ;
+
     @FXML
-    private Button button_add;
+    private Button button_addQ;
 
     @FXML
     private ScrollPane scroll_panel;
 
     public static String question;
 
+
     @FXML
     void initialize() {
-        field_search.setOnAction(actionEvent -> {
+        field_search.setOnKeyTyped(keyEvent -> {
             question = field_search.getText();
 
             /**
              * ищем из бд ответ на вопрос
-             * **/
+             **/
 
             if (field_search.getText().equals("кдвц")) { // если нашли такой вопрос
-                field_search.setLayoutY(5);
-
-                setActive_buttons_edit(true);
-                setActive_button_add(false);
-                setActive_scrollPanel(true);
-            } else if (field_search.getLength() > 0) { // если не нашли такого вопроса
-                field_search.setLayoutY(162);
-
-                setActive_buttons_edit(false);
-                setActive_button_add(true);
-                setActive_scrollPanel(false);
+                setView(1);
+            } else if (field_search.getLength() > 0) { // если не нашли такой вопрос
+                setView(2);
             } else {
-                field_search.setLayoutY(162);
-
-                setActive_buttons_edit(false);
-                setActive_button_add(false);
-                setActive_scrollPanel(false);
+                setView(0);
             }
         });
 
-        button_add.setOnAction(actionEvent -> {
+        button_addQ.setOnAction(actionEvent -> {
             /** добавляем вопрос в репозиторий и отправляемся в меню редактирования вопроса **/
-            button_add.getScene().getWindow().hide();
 
             /**
              * сначала добавляем вопрос в репозиторий
              */
 
-            openEditMenu();
+            setView(1);
         });
 
-        button_edit.setOnAction(actionEvent -> {
+        button_addAnsw.setOnAction(actionEvent -> {
+            /** добавляем вопрос в репозиторий и отправляемся в меню редактирования вопроса **/
+
+            try {
+                open_menu("Add");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        button_deleteQ.setOnAction(actionEvent -> {
             /** просто отправляемся меню редактирования вопроса **/
-            button_edit.getScene().getWindow().hide();
 
-            openEditMenu();
+            /**
+             * удаляем вопрос из репозитория
+             **/
+
+            try {
+                open_menu("Confirmation");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            field_search.setText("");
+            setView(0);
         });
+
+        setButtonAnimation();
     }
 
-    private void openEditMenu() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/EditMenu.fxml"));
+    private void open_menu(String name) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + name +  "Menu.fxml"));
 
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    private void setView(int view) {
+        switch(view) {
+            case 0:
+                /** доступна только поле поиска **/
+                field_search.setLayoutY(POS_CENTER_SEARCH_FIELD_Y);
+
+                setActive_buttons_edit(false);
+                setActive_button_addQ(false);
+                setActive_scrollPanel(false);
+                break;
+            case 1:
+                /** таблица с ответами и кнопки редактирования **/
+                field_search.setLayoutY(POS_TOP_SEARCH_FIELD_Y);
+
+                setActive_buttons_edit(true);
+                setActive_button_addQ(false);
+                setActive_scrollPanel(true);
+                break;
+            case 2:
+                /** только кнопка добавить ответ **/
+                field_search.setLayoutY(POS_CENTER_SEARCH_FIELD_Y);
+
+                setActive_buttons_edit(false);
+                setActive_button_addQ(true);
+                setActive_scrollPanel(false);
+                break;
+            default:
+                break;
         }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
     }
 
     private void setActive_buttons_edit(boolean flag) {
-        button_delete.setVisible(flag);
-        button_delete.setDisable(!flag);
+        button_deleteQ.setVisible(flag);
+        button_deleteQ.setDisable(!flag);
 
-        button_edit.setVisible(flag);
-        button_edit.setDisable(!flag);
+        button_addAnsw.setVisible(flag);
+        button_addAnsw.setDisable(!flag);
     }
 
-    private void setActive_button_add(boolean flag) {
-        button_add.setVisible(flag);
-        button_add.setDisable(!flag);
+    private void setActive_button_addQ(boolean flag) {
+        button_addQ.setVisible(flag);
+        button_addQ.setDisable(!flag);
     }
 
     private void setActive_scrollPanel(boolean flag) {
         scroll_panel.setVisible(flag);
         scroll_panel.setDisable(!flag);
+    }
+
+    private void setButtonAnimation() {
+        button_addAnsw.setOnMouseClicked(mouseEvent -> {
+            button_addAnsw.setOpacity(1f);
+        });
+
+        button_addAnsw.setOnMousePressed(mouseEvent -> {
+            button_addAnsw.setOpacity(0.4f);
+        });
+
+        button_addQ.setOnMouseClicked(mouseEvent -> {
+            button_addQ.setOpacity(1f);
+        });
+
+        button_addQ.setOnMousePressed(mouseEvent -> {
+            button_addQ.setOpacity(0.4f);
+        });
+
+        button_deleteQ.setOnMouseClicked(mouseEvent -> {
+            button_deleteQ.setOpacity(1f);
+        });
+
+        button_deleteQ.setOnMousePressed(mouseEvent -> {
+            button_deleteQ.setOpacity(0.4f);
+        });
     }
 }
