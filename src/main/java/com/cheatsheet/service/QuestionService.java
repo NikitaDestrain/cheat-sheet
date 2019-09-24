@@ -4,9 +4,7 @@ import com.cheatsheet.factory.QuestionFactory;
 import com.cheatsheet.pojo.Question;
 import com.cheatsheet.util.IDGenerator;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class QuestionService {
 
@@ -56,6 +54,11 @@ public class QuestionService {
     // todo return immutable list
     public List<Question> getAll() {
         return null;
+    }
+
+    // stub
+    public Collection<Question> _getAll() {
+        return questions.values();
     }
 
     public void update() {

@@ -11,10 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+// todo rename to MainMenuController
 public class Controller {
     private final int POS_CENTER_SEARCH_FIELD_Y = 162;
     private final int POS_TOP_SEARCH_FIELD_Y = 5;
 
+    // todo rename all vars to java code convention
+    // example: filed_search -> filedSearch
     @FXML
     private TextField field_search;
 
@@ -30,6 +33,7 @@ public class Controller {
     @FXML
     private ScrollPane scroll_panel;
 
+    // todo do not use static for data manipulation
     public static String question;
 
 
